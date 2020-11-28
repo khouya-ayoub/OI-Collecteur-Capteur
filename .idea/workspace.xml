@@ -19,17 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Read me">
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/node_one" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Two-Nodes/node_two" afterDir="false" />
+    <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Lancer les deux noeuds">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Two-Nodes/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_two.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/node_two.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,22 +55,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Makefile" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Collecteur-Capteur/Capteur" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur/Capteur" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur" />
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur/Collecteur" />
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur/Capteur" />
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur/config" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Unnamed" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" nameIsGenerated="true">
       <makefile filename="C:\Users\AYOUB\Desktop\Cloud\Git\OI-Collecteur-Capteur\Makefile" target="" workingDirectory="" arguments="">
         <envs />
@@ -99,7 +92,10 @@
       <workItem from="1606312298721" duration="2746000" />
       <workItem from="1606563754009" duration="1674000" />
       <workItem from="1606565989517" duration="431000" />
-      <workItem from="1606566534540" duration="639000" />
+      <workItem from="1606566534540" duration="8995000" />
+      <workItem from="1606580154601" duration="1821000" />
+      <workItem from="1606582229163" duration="436000" />
+      <workItem from="1606582749912" duration="3488000" />
     </task>
     <task id="LOCAL-00001" summary="Read me">
       <created>1606565327936</created>
@@ -108,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606565327936</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Lancer les deux noeuds">
+      <created>1606567237102</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1606567237102</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,24 +135,31 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Read me" />
-    <option name="LAST_COMMIT_MESSAGE" value="Read me" />
+    <MESSAGE value="Lancer les deux noeuds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lancer les deux noeuds" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606312363724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606312363724" />
+    <state x="685" y="302" width="657" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606572021860">
+      <screen x="67" y="27" width="1853" height="948" />
+    </state>
+    <state x="685" y="302" width="657" height="396" key="#com.intellij.fileTypes.FileTypeChooser/67.27.1853.948@67.27.1853.948" timestamp="1606572021860" />
     <state x="740" y="261" key="FileChooserDialogImpl" timestamp="1606312351757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606312351757" />
-    <state x="461" y="165" key="SettingsEditor" timestamp="1606312285912">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-268" y="132" key="SettingsEditor" timestamp="1606583188381">
+      <screen x="67" y="27" width="891" height="939" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606312285912" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606565332566">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-268" y="132" key="SettingsEditor/67.27.891.939@67.27.891.939" timestamp="1606583188381" />
+    <state x="600" y="258" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606567241924">
+      <screen x="67" y="27" width="1853" height="948" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606565332566" />
+    <state x="600" y="258" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.948@67.27.1853.948" timestamp="1606567241924" />
   </component>
 </project>

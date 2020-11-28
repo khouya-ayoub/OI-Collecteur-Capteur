@@ -42,9 +42,9 @@
 #define SEEK_ECO_CONFIG_ACK "seekEcoConfigAck"
 #define SEEK_MIN_CONFIG_ACK "seekMinConfigAck"
 #define SEEK_FULL_CONFIG_ACK "seekFullConfigAck"
-#define SEND_ECO_CONFIG "sendEcoConfig"
-#define SEND_MIN_CONFIG "sendMinConfig"
-#define SEND_FULL_CONFIG "sendFullConfig"
+#define SEND_ECO_CONFIGIG "sendEcoConfig"
+#define SEND_MIN_CONFIGIG "sendMinConfig"
+#define SEND_FULL_CONFIGIG "sendFullConfig"
 
 
 typedef struct {
@@ -60,14 +60,14 @@ int sensor_port = 8002;
 std::vector<std::string> nodeList;
 std::vector<std::string> dataList;
 std::vector<std::string> dataConfig;
-std::vector<std::string> nodeswithdata;
+std::vector<std::string> nodesWithData;
 std::vector<std::string> nodesSeekingEco;
 std::vector<std::string> nodesSeekingMin;
 std::vector<std::string> nodesSeekingFull;
 
 std::string dataDirectory = "database";
 
-std::mutex nodeListMutex, dataListMutex, nodeswithdataMutex, nodesSeekingEcoMutex, nodesSeekingMinMutex, nodesSeekingFullMutex;
+std::mutex nodeListMutex, dataListMutex, nodesWithDataMutex, nodesSeekingEcoMutex, nodesSeekingMinMutex, nodesSeekingFullMutex;
 
 /* A server instance answering client commands */
 void* serverFunc(void *s) {
@@ -77,76 +77,75 @@ void* serverFunc(void *s) {
 	int socket = params->sock;
 	std::string ip_client(params->ip_addr);
 	
-	std::cout << "[COLLECTOR] Receiving message from ip : " << ip_client.c_str() << std::endl;
-	std::cout << "[COLLECTOR] For transmission on socket : " << socket << std::endl;
-	
-	//int socket = *((int*)(&s));
+	std::cout << "[COLLECTOR SERVER] Receiving message from ip : " << ip_client.c_str() << std::endl;
+	std::cout << "[COLLECTOR SERVER] For transmission on socket : " << socket << std::endl;
+
 	char buf[BUFFERMAX];
 
 	// Reading command
 	sock_receive(socket, buf, BUFFERMAX);
 
-	std::cout << "[COLLECTOR] Receiving message: " << buf << std::endl;
+	std::cout << "[COLLECTOR SERVER] Receiving message: " << buf << std::endl;
 	
 	std::string message(buf);
-	std::string command = message.substr(0,message.find("."));
-	std::string ip_sensor = message.substr(message.find(".")+1,message.size());
+	std::string command = message.substr(0, message.find("."));
+	std::string ip_sensor = message.substr(message.find(".")+1, message.size());
 	
-	std::cout << "[COLLECTOR] Receiving message: " << command << std::endl;
-	std::cout << "[COLLECTOR] Received sensor address : " << ip_sensor.c_str() << std::endl;
+	std::cout << "[COLLECTOR SERVER] Receiving message: " << command << std::endl;
+	std::cout << "[COLLECTOR SERVER] Received sensor address : " << ip_sensor.c_str() << std::endl;
 
 	// Answering command Notify Data Available
 	if (message_is(buf, DATA_AVAILABLE)) {
 	
 		nodeListMutex.lock();
-		nodeswithdataMutex.lock();
+		nodesWithDataMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodeList.begin(), nodeList.end(), ip_sensor) == nodeList.end()) {
-			std::cout << "[COLLECTOR] New sensor node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR SERVER] New sensor node: " << ip_sensor.c_str() << std::endl;
 			nodeList.push_back(ip_sensor);
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR] Node already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR SERVER] Node already stored: " << ip_sensor.c_str() << std::endl;
 		}
-		if (std::find(nodeswithdata.begin(), nodeswithdata.end(), ip_sensor) == nodeswithdata.end()) {
+		if (std::find(nodesWithData.begin(), nodesWithData.end(), ip_sensor) == nodesWithData.end()) {
 			//Affichage à enlever en fonctionnement normal
-			std::cout << "[COLLECTOR] Sensor node having data : " << ip_sensor.c_str() << std::endl;
-			nodeswithdata.push_back(ip_sensor);
+			std::cout << "[COLLECTOR SERVER] Sensor node having data : " << ip_sensor.c_str() << std::endl;
+			nodesWithData.push_back(ip_sensor);
 		}
+
 		sock_send(socket, EVT_DATA_AVAILABLE_ACK);
-		nodeswithdataMutex.unlock();
+		nodesWithDataMutex.unlock();
 		nodeListMutex.unlock();
-		
 	}
 
-	// Answering command Seek Eco_config
+	// Answering command Seek Eco_CONFIGig
 	if (message_is(buf, SEEK_ECO_CONFIG)) {
 
-		std::cout << "[COLLECTOR] Receiving Event: " << buf << " - evt : " << SEEK_ECO_CONFIG << std::endl;
+		std::cout << "[COLLECTOR ECO_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_ECO_CONFIG << std::endl;
 		nodesSeekingEcoMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodesSeekingEco.begin(), nodesSeekingEco.end(), ip_sensor) == nodesSeekingEco.end()) {
-			std::cout << "[COLLECTOR] New sensor seeking ECO node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR ECO_CONFIG] New sensor seeking ECO node: " << ip_sensor.c_str() << std::endl;
 			nodesSeekingEco.push_back(ip_sensor);
 		} else {
 		    //En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR] Node seeking ECO already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR ECO_CONFIG] Node seeking ECO already stored: " << ip_sensor.c_str() << std::endl;
 		}
 
 		sock_send(socket, SEEK_ECO_CONFIG_ACK);
 		nodesSeekingEcoMutex.unlock();
 	} 
 	
-	// Answering command Seek Min_config
+	// Answering command Seek Min_CONFIGig
 	if (message_is(buf, SEEK_MIN_CONFIG)) {
 
-	    std::cout << "[COLLECTOR] Receiving Event: " << buf << " - evt : " << SEEK_MIN_CONFIG << std::endl;
+	    std::cout << "[COLLECTOR MIN_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_MIN_CONFIG << std::endl;
 		nodesSeekingMinMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodesSeekingMin.begin(), nodesSeekingMin.end(), ip_sensor) == nodesSeekingMin.end()) {
-			std::cout << "[COLLECTOR] New sensor node seeking MIN: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR MIN_CONFIG] New sensor node seeking MIN: " << ip_sensor.c_str() << std::endl;
 			nodesSeekingMin.push_back(ip_sensor);
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR] Node seeking MIN already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR MIN_CONFIG] Node seeking MIN already stored: " << ip_sensor.c_str() << std::endl;
 		}
 
 		sock_send(socket, SEEK_MIN_CONFIG_ACK);
@@ -154,17 +153,17 @@ void* serverFunc(void *s) {
 	} 
 	
 	
-	// Answering command Seek Full_config
+	// Answering command Seek Full_CONFIG
 	if (message_is(buf, SEEK_FULL_CONFIG)) {
 	
-	    std::cout << "[COLLECTOR] Receiving Event: " << buf << " - evt : " << SEEK_FULL_CONFIG << std::endl;
+	    std::cout << "[COLLECTOR FULL_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_FULL_CONFIG << std::endl;
 		nodesSeekingFullMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodesSeekingFull.begin(), nodesSeekingFull.end(), ip_sensor) == nodesSeekingFull.end()) {
-			std::cout << "[COLLECTOR] New sensor node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR FULL_CONFIG] New sensor node: " << ip_sensor.c_str() << std::endl;
 			nodesSeekingFull.push_back(ip_sensor);
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR] Node already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR FULL_CONFIG] Node already stored: " << ip_sensor.c_str() << std::endl;
 		}
 
 		sock_send(socket, SEEK_FULL_CONFIG_ACK);
@@ -197,15 +196,15 @@ void* listenServer(void *n) {
 		//memset(params,0,sizeof(server_params));
 		params->sock = sock_effective;
 		
-		std::cout << "[COLLECTOR] Connection accepted at socket : " << params->sock << std::endl;
+		std::cout << "[COLLECTOR LISTENING] Connection accepted at socket : " << params->sock << std::endl;
 		
 		strncpy(params->ip_addr, buf, strlen(buf));
 		
-		std::cout << "[COLLECTOR] Connection accepted from : " << params->ip_addr << std::endl;
+		std::cout << "[COLLECTOR LISTENING] Connection accepted from : " << params->ip_addr << std::endl;
 
 		pthread_t thrd;
 		if (pthread_create(&thrd, NULL, serverFunc, (void *) params) != 0) {
-			std::cerr << "[COLLECTOR] Error while creating a new thread" << std::endl;
+			std::cerr << "[COLLECTOR LISTENING] Error while creating a new thread" << std::endl;
 			pthread_exit(NULL);
 		}
 		usleep(500000);
@@ -215,7 +214,6 @@ void* listenServer(void *n) {
 
 void* Sent_Eco(void *i) {
 	char* ip_serveur = *((char**)(&i));
-	std::string ip_serveur_str(ip_serveur);
 	char buf[BUFFERMAX];  /* buffer pour les données reçues*/
 
 	/* Création de la socket de communication */
@@ -224,12 +222,12 @@ void* Sent_Eco(void *i) {
 	/* demande d'une connexion au serveur */
 	open_connection(clt_sock, ip_serveur, sensor_port);
 	
-	sock_send(clt_sock, SEND_ECO_CONFIG);
+	sock_send(clt_sock, SEND_ECO_CONFIGIG);
 
 	/* envoi du message au serveur */
 	sock_send(clt_sock, dataConfig.at(1).c_str());
 	//supprimer de nodeseekinggeco
-	std::vector<std::string>::iterator it = std::find(nodesSeekingEco.begin(), nodesSeekingEco.end(), ip_serveur_str);
+	std::vector<std::string>::iterator it = std::find(nodesSeekingEco.begin(), nodesSeekingEco.end(), ip_serveur);
 	if (it != nodesSeekingEco.end()) {
 	    nodesSeekingEco.erase(it);
 	}
@@ -241,7 +239,6 @@ void* Sent_Eco(void *i) {
 
 void* Sent_Min(void *i) {
 	char* ip_serveur = *((char**)(&i));
-	std::string ip_serveur_str(ip_serveur);
 	char buf[BUFFERMAX];  /* buffer pour les données reçues*/
 
 	/* Création de la socket de communication */
@@ -250,12 +247,12 @@ void* Sent_Min(void *i) {
 	/* demande d'une connexion au serveur */
 	open_connection(clt_sock, ip_serveur, sensor_port);
 	
-	sock_send(clt_sock, SEND_MIN_CONFIG);
+	sock_send(clt_sock, SEND_MIN_CONFIGIG);
 
 	/* envoi du message au le serveur */
     sock_send(clt_sock, dataConfig.at(0).c_str());
 	//supprimer de nodesSeekingMin
-	std::vector<std::string>::iterator it = std::find(nodesSeekingMin.begin(), nodesSeekingMin.end(), ip_serveur_str);
+	std::vector<std::string>::iterator it = std::find(nodesSeekingMin.begin(), nodesSeekingMin.end(), ip_serveur);
     if (it != nodesSeekingEco.end()) {
         nodesSeekingEco.erase(it);
     }
@@ -314,43 +311,42 @@ void* updateDataList(void *i) {
 	/* envoi du message au serveur */
 	sock_send(clt_sock, EVT_GET_DATA);
 
-	nodeswithdataMutex.lock();
+	nodesWithDataMutex.lock();
 	dataListMutex.lock();
 	/* Lecture du message du client */
 	while (true) {
 		sock_receive(clt_sock, buf, BUFFERMAX);
 
 		if (message_is(buf, EVT_GET_DATA_END)) { 
-			std::vector<std::string>::iterator it = std::find(nodeswithdata.begin(), nodeswithdata.end(), ip_serveur_str);
-			if (it != nodeswithdata.end())
-				nodeswithdata.erase(it);
+			std::vector<std::string>::iterator it = std::find(nodesWithData.begin(), nodesWithData.end(), ip_serveur_str);
+			if (it != nodesWithData.end())
+				nodesWithData.erase(it);
 			break; 
 		}else {
-		
-		std::string newdata(buf);
-		//std::string newdataWithIP = ip_serveur_str + "_" + newdata;
-		std::string newdataWithIP = newdata;
-		if (std::find(dataList.begin(), dataList.end(), newdataWithIP) == dataList.end()) {
-			std::cout << "[COLLECTOR] New data: " << newdataWithIP << std::endl;
-			FILE* datafile;
-			std::string filename(dataDirectory + "/" + newdataWithIP);
-			datafile = fopen(filename.c_str(), "w");
-			fclose(datafile);
-			dataList.push_back(newdataWithIP);
-		} else {
-			std::cout << "[COLLECTOR] Data already stored: " << newdataWithIP << std::endl;
-		}
+            std::string newdata(buf);
+            //std::string newdataWithIP = ip_serveur_str + "_" + newdata;
+            std::string newdataWithIP = newdata;
+            if (std::find(dataList.begin(), dataList.end(), newdataWithIP) == dataList.end()) {
+                std::cout << "[COLLECTOR] New data: " << newdataWithIP << std::endl;
+                FILE* datafile;
+                std::string filename(dataDirectory + "/" + newdataWithIP);
+                datafile = fopen(filename.c_str(), "w");
+                fclose(datafile);
+                dataList.push_back(newdataWithIP);
+            } else {
+                std::cout << "[COLLECTOR] Data already stored: " << newdataWithIP << std::endl;
+            }
 		}
 	}
 	
 	dataListMutex.unlock();
-	nodeswithdataMutex.unlock();
+	nodesWithDataMutex.unlock();
+
 	std::cout << "[COLLECTOR] List of current data in database " << std::endl;	
 	for (std::string dataname : dataList) {
 		std::cout << "[COLLECTOR] " << dataname << std::endl;	
 	}
-	
-	
+
 	/* fermeture de la socket */
 	close_connection(clt_sock);
 }
@@ -359,47 +355,47 @@ void* updateDataList(void *i) {
 void* clientFunc(void *n) {
 	while(1) {
 		
-		std::cout << "[COLLECTOR] Waiting data ..." << std::endl;
+		std::cout << "[COLLECTOR CLIENT] Waiting data ..." << std::endl;
 
-		nodeswithdataMutex.lock();
+		nodesWithDataMutex.lock();
 		dataListMutex.lock();
-			for (std::string ip : nodeswithdata) {
-				std::cout << "[COLLECTOR] Seeking data list from " << ip << std::endl;
 
-				pthread_t traitement;
-				if(pthread_create(&traitement, NULL, updateDataList, (void *)ip.c_str()) != 0) {
-					std::cerr << "[COLLECTOR] Error while creating a new thread: client sensor data update" << std::endl;
-					pthread_exit(NULL);
-				}
+		for (std::string ip : nodesWithData) {
+			std::cout << "[COLLECTOR CLIENT] Seeking data list from " << ip << std::endl;
+
+			pthread_t traitement;
+			if(pthread_create(&traitement, NULL, updateDataList, (void *)ip.c_str()) != 0) {
+				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+				pthread_exit(NULL);
 			}
-		nodeswithdataMutex.unlock();
+		}
+
+		nodesWithDataMutex.unlock();
 		dataListMutex.unlock();
 		
-		//Response ECO_CONFIG
+		//Response ECO_CONFIGIG
 		nodesSeekingEcoMutex.lock();
-			for (std::string ip : nodesSeekingEco) {
-			   std::cout << "[COLLECTOR] Seeking Eco_Config file from " << ip << std::endl;
-
-				pthread_t traitement;
-				if(pthread_create(&traitement, NULL, Sent_Eco, (void *)ip.c_str()) != 0) {
-					std::cerr << "[COLLECTOR] Error while creating a new thread: client sensor data update" << std::endl;
-					pthread_exit(NULL);
-				}
+		for (std::string ip : nodesSeekingEco) {
+			std::cout << "[COLLECTOR CLIENT] Seeking ECO_CONFIG file from " << ip << std::endl;
+			pthread_t traitement;
+			if(pthread_create(&traitement, NULL, Sent_Eco, (void *)ip.c_str()) != 0) {
+				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread, client sensor data update" << std::endl;
+				pthread_exit(NULL);
 			}
+		}
 		nodesSeekingEcoMutex.unlock();
 		
 		
-		//Response MIN_CONFIG
+		//Response MIN_CONFIGIG
 		nodesSeekingMinMutex.lock();
-			for (std::string ip : nodesSeekingMin) {
-			   std::cout << "[COLLECTOR] Seeking Min_Config file from " << ip << std::endl;
-
-				pthread_t traitement;
-				if(pthread_create(&traitement, NULL, Sent_Min, (void *)ip.c_str()) != 0) {
-					std::cerr << "[COLLECTOR] Error while creating a new thread: client sensor data update" << std::endl;
-					pthread_exit(NULL);
-				}
+		for (std::string ip : nodesSeekingMin) {
+			std::cout << "[COLLECTOR CLIENT] Seeking MIN_CONFIG file from " << ip << std::endl;
+			pthread_t traitement;
+			if(pthread_create(&traitement, NULL, Sent_Min, (void *)ip.c_str()) != 0) {
+				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+				pthread_exit(NULL);
 			}
+		}
 		nodesSeekingMinMutex.unlock();
 
 		usleep(CHECK_INTERVAL);
@@ -428,7 +424,6 @@ int main(int argc, char* argv[]) {
 				std::cerr << "[MAIN] Error: no specified port" << std::endl;
 				exit(EXIT_FAILURE);
 			}
-
 		} else if(strarg == "-d") {
 			if (i < (argc - 1)) {
 				std::string dir(argv[++i]);
