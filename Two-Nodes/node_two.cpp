@@ -19,11 +19,11 @@
 #include <vector>
 #include <unistd.h>
 // Custom libraries
-#include "net_aux.h"
+#include "lib/net_aux.h"
 
 // Server Configuration
-#define BIND_ADDR "127.0.0.1" // Ip address
-#define port 8000; // Default port
+#define BIND_ADDR "127.0.0.2" // Ip address
+int port = 8000; // Default port
 #define CHECK_INTERVAL 5000000
 
 // Buffer config

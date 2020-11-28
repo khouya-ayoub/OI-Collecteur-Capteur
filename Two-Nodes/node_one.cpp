@@ -19,11 +19,11 @@
 #include <vector>
 #include <unistd.h>
 // Custom libraries
-#include "net_aux.h"
+#include "lib/net_aux.h"
 
 // Server Configuration
 #define BIND_ADDR "127.0.0.1" // Ip address
-#define PORT 8000; // Default PORT
+int port = 8000; // Default port
 #define CHECK_INTERVAL 5000000
 
 // Buffer config
@@ -82,7 +82,7 @@ void* listenServer(void *n) {
 	srv_sock = create_socket();
 
 	/* initialisation de la structure representant l'adresse */
-	start_server(srv_sock, BIND_ADDR, PORT);
+	start_server(srv_sock, BIND_ADDR, port);
 
 	while(1){
 		/* Attendre les requêtes de connexion */
@@ -105,7 +105,7 @@ void* updateNodeList(void *i) {
 	int clt_sock = create_socket();
 
 	/* demande d'une connexion au serveur */
-	open_connection(clt_sock, ip_serveur, PORT);
+	open_connection(clt_sock, ip_serveur, port);
 
 	/* envoi du message au le serveur */
 	sock_send(clt_sock, EVT_GET_NODES);
@@ -139,7 +139,7 @@ void* updateJokeList(void *i) {
 	int clt_sock = create_socket();
 
 	/* demande d'une connexion au serveur */
-	open_connection(clt_sock, ip_serveur, PORT);
+	open_connection(clt_sock, ip_serveur, port);
 
 	/* envoi du message au le serveur */
 	sock_send(clt_sock, EVT_GET_JOKESTITLES);
@@ -205,9 +205,9 @@ int main(int argc, char* argv[]) {
 
 		if(strarg == "-p") {
 			if (i < (argc - 1)) {
-				PORT = atoi(argv[++i]);
+				port = atoi(argv[++i]);
 			} else {
-				std::cerr << "[MAIN] Error: no specified PORT" << std::endl;
+				std::cerr << "[MAIN] Error: no specified port" << std::endl;
 				exit(EXIT_FAILURE);
 			}
 

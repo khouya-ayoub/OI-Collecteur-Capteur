@@ -20,7 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Read me">
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/captures/capture_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/node_one" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Two-Nodes/node_two" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_two.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/node_two.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,15 +50,20 @@
     </option>
   </component>
   <component name="ProjectId" id="1kmX0wvDm4rEgzG2CAlsv5RzyQg" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Makefile" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
@@ -84,6 +98,8 @@
       <workItem from="1606309880041" duration="778000" />
       <workItem from="1606312298721" duration="2746000" />
       <workItem from="1606563754009" duration="1674000" />
+      <workItem from="1606565989517" duration="431000" />
+      <workItem from="1606566534540" duration="639000" />
     </task>
     <task id="LOCAL-00001" summary="Read me">
       <created>1606565327936</created>
@@ -114,6 +130,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Read me" />
     <option name="LAST_COMMIT_MESSAGE" value="Read me" />
   </component>
