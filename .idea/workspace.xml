@@ -21,19 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/noeud_capteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/noeud_collecteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/jokes/date.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/jokes/ipv4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/jokes/ipv6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/jokes/tcp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/jokes/udp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/net_aux.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/net_aux.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/noeud" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/noeud.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +54,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" nameIsGenerated="true">
       <makefile filename="C:\Users\AYOUB\Desktop\Cloud\Git\OI-Collecteur-Capteur\Makefile" target="" workingDirectory="" arguments="">
         <envs />
@@ -85,6 +84,7 @@
       <workItem from="1606307862547" duration="632000" />
       <workItem from="1606309880041" duration="778000" />
       <workItem from="1606312298721" duration="2746000" />
+      <workItem from="1606563754009" duration="1544000" />
     </task>
     <servers />
   </component>
