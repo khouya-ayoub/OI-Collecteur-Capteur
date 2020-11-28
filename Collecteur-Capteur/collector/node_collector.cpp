@@ -66,6 +66,7 @@ std::vector<std::string> nodesSeekingMin;
 std::vector<std::string> nodesSeekingFull;
 
 std::string dataDirectory = "database";
+std::string configDirectory = "config";
 
 std::mutex nodeListMutex, dataListMutex, nodesWithDataMutex, nodesSeekingEcoMutex, nodesSeekingMinMutex, nodesSeekingFullMutex;
 
@@ -155,10 +156,10 @@ void* serverFunc(void *s) {
 	
 	// Answering command Seek Full_CONFIG
 	if (message_is(buf, SEEK_FULL_CONFIG)) {
-	
+
 	    std::cout << "[COLLECTOR FULL_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_FULL_CONFIG << std::endl;
 		nodesSeekingFullMutex.lock();
-		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
+		//Parcourir la liste des capteurs connus pour savoir si ip_client y est
 		if (std::find(nodesSeekingFull.begin(), nodesSeekingFull.end(), ip_sensor) == nodesSeekingFull.end()) {
 			std::cout << "[COLLECTOR FULL_CONFIG] New sensor node: " << ip_sensor.c_str() << std::endl;
 			nodesSeekingFull.push_back(ip_sensor);
@@ -168,7 +169,7 @@ void* serverFunc(void *s) {
 
 		sock_send(socket, SEEK_FULL_CONFIG_ACK);
 		nodesSeekingFullMutex.unlock();
-	} 
+	}
 	
 	// Closing connection
 	close_connection(socket);
@@ -231,8 +232,7 @@ void* Sent_Eco(void *i) {
 	if (it != nodesSeekingEco.end()) {
 	    nodesSeekingEco.erase(it);
 	}
-	// confirmation
-	sock_send(clt_sock, SEEK_ECO_CONFIG_ACK);
+
 	/* fermeture de la socket */
 	close_connection(clt_sock);
 }
@@ -256,8 +256,6 @@ void* Sent_Min(void *i) {
     if (it != nodesSeekingEco.end()) {
         nodesSeekingEco.erase(it);
     }
-    // Confirmation
-	sock_send(clt_sock, SEEK_ECO_CONFIG_ACK);
 	/* fermeture de la socket */
 	close_connection(clt_sock);
 }
@@ -445,7 +443,7 @@ int main(int argc, char* argv[]) {
 	// data
 	std::cout << "[MAIN] Adding data Config to list" << std::endl;
 
-	DIR           *dir = opendir(dataDirectory.c_str());
+	DIR           *dir = opendir(configDirectory.c_str());
 	struct dirent *pdir;
 	while ((pdir = readdir(dir))) {
 		if(std::strlen(pdir->d_name) < 5) { continue; }

@@ -68,7 +68,7 @@ std::string dataDirectory = "data";
 std::string dataConfig = "config";
 
 int numeroData = 1;
-int max_data_size = 30;
+int max_data_size = 6;
 int stop = 0;
 int counter_file_lost = 0;
 int counter_file_lost_all = 0;
