@@ -1,3 +1,6 @@
+/*
+ *                  CAPTOR
+ */
 /* Cette constante permet d’utiliser les versions "thread safe" des */
 /* fonction de la lib C elle est OBLIGATOIRE */
 #define _REENTRANT
@@ -17,11 +20,14 @@
 #include <vector>
 #include <unistd.h>
 
-#include "net_aux.h"
+// Custom libraries
+#include "../lib/net_aux.h"
 
-#define BUFFERMAX 100
-//#define BIND_ADDR "127.0.1.1"
+// Server Configuration
 #define CHECK_INTERVAL 2000000
+
+// Buffer Config
+#define BUFFERMAX 100
 
 // Event names
 #define DATA_AVAILABLE "dataAvailable"
@@ -50,19 +56,22 @@ int srv_sock;
 std::string ip_addr_df("127.0.1.1"); //adresse par defaut
 int port = 8002; // Port par defaut
 int sink_port = 8000;
+
 std::vector<std::string> nodeList;
 std::vector<std::string> dataList;
 std::vector<std::string> dataLost;
 
 std::vector<std::string> receivedConfig;
 std::vector<std::string> nodeswithdata;
-std::string dataDirectory = "database/";
-std::string dataConfig = "dataConfig/";
+
+std::string dataDirectory = "data/";
+std::string dataConfig = "config/";
+
 int numeroData = 1;
 int max_data_size = 30;
 int stop = 0;
-int couter_file_lost = 0;
-int couter_file_lost_all = 0;
+int counter_file_lost = 0;
+int counter_file_lost_all = 0;
 int counter_file_trans = 0;
 int battery_level = 1000;
 bool test_battery_600 = false;
@@ -73,8 +82,7 @@ std::mutex nodeListMutex, dataListMutex, nodeswithdataMutex, dataLostMutex, rece
 
 /* A server instance answering client commands */
 void* serverFunc(void *s) {
-	
-	//server_params params = *((server_params*)(&s));
+
 	server_params* params = (server_params*) s;
 	int socket = params->sock;
 	std::string ip_client(params->ip_addr);
@@ -96,14 +104,14 @@ void* serverFunc(void *s) {
 		battery_level -= 20;
 		counter_file_trans ++;
 		sock_send(socket, str.c_str());
-		std::cout <<"transmission data -20  : "<< battery_level <<std::endl;
+		std::cout << "transmission data -20  : " << battery_level << std::endl;
 		}
 		sock_send(socket, EVT_GET_DATA_END);
 		
 		//EFFACER LES DONNEES EXISTANTES
 		dataList.clear();
 		stop = 0;
-		couter_file_lost = 0;
+		counter_file_lost = 0;
 		
 		dataListMutex.unlock();
 	}
@@ -321,8 +329,8 @@ void* clientFunc(void *n) {
 		battery_level -= 50;
 		std::cout <<"[CLIENT] file creation data perdu -50  : "<< battery_level <<std::endl;
 		
-		couter_file_lost ++;
-		couter_file_lost_all ++;
+		counter_file_lost ++;
+		counter_file_lost_all ++;
 		filename = dataDirectory + "/" + ip_addr_df + "_data_" + num + "_lost";
 	    	datafile = fopen(filename.c_str(), "w");
 		fclose(datafile);
