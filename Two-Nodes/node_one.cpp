@@ -1,3 +1,6 @@
+/*
+ *              NODE ONE
+ */
 /* Cette constante permet d’utiliser les versions "thread safe" des */
 /* fonction de la lib C elle est OBLIGATOIRE */
 #define _REENTRANT
@@ -15,12 +18,16 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
-
+// Custom libraries
 #include "net_aux.h"
 
-#define BUFFERMAX 100
-#define BIND_ADDR "127.0.0.1"
+// Server Configuration
+#define BIND_ADDR "127.0.0.1" // Ip address
+#define PORT 8000; // Default PORT
 #define CHECK_INTERVAL 5000000
+
+// Buffer config
+#define BUFFERMAX 100
 
 // Event names
 #define EVT_GET_NODES "getNodes"
@@ -28,13 +35,13 @@
 #define EVT_GET_JOKESTITLES "getJokesTitles"
 #define EVT_GET_JOKESTITLES_END "getJokesTitlesEnd"
 
-int srv_sock;
-int port = 8000; // Port par defaut
+// Utils
 std::vector<std::string> nodeList;
 std::vector<std::string> jokes;
-std::string jokeDirectory = "jokes/";
-
+std::string jokeDirectory = "jokes_one/";
 std::mutex nodeListMutex, jokeListMutex;
+
+int srv_sock;
 
 /* A server instance answering client commands */
 void* serverFunc(void *s) {
@@ -75,7 +82,7 @@ void* listenServer(void *n) {
 	srv_sock = create_socket();
 
 	/* initialisation de la structure representant l'adresse */
-	start_server(srv_sock, BIND_ADDR, port);
+	start_server(srv_sock, BIND_ADDR, PORT);
 
 	while(1){
 		/* Attendre les requêtes de connexion */
@@ -98,7 +105,7 @@ void* updateNodeList(void *i) {
 	int clt_sock = create_socket();
 
 	/* demande d'une connexion au serveur */
-	open_connection(clt_sock, ip_serveur, port);
+	open_connection(clt_sock, ip_serveur, PORT);
 
 	/* envoi du message au le serveur */
 	sock_send(clt_sock, EVT_GET_NODES);
@@ -132,7 +139,7 @@ void* updateJokeList(void *i) {
 	int clt_sock = create_socket();
 
 	/* demande d'une connexion au serveur */
-	open_connection(clt_sock, ip_serveur, port);
+	open_connection(clt_sock, ip_serveur, PORT);
 
 	/* envoi du message au le serveur */
 	sock_send(clt_sock, EVT_GET_JOKESTITLES);
@@ -198,9 +205,9 @@ int main(int argc, char* argv[]) {
 
 		if(strarg == "-p") {
 			if (i < (argc - 1)) {
-				port = atoi(argv[++i]);
+				PORT = atoi(argv[++i]);
 			} else {
-				std::cerr << "[MAIN] Error: no specified port" << std::endl;
+				std::cerr << "[MAIN] Error: no specified PORT" << std::endl;
 				exit(EXIT_FAILURE);
 			}
 
