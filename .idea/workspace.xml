@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Read me">
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,8 +83,16 @@
       <workItem from="1606307862547" duration="632000" />
       <workItem from="1606309880041" duration="778000" />
       <workItem from="1606312298721" duration="2746000" />
-      <workItem from="1606563754009" duration="1544000" />
+      <workItem from="1606563754009" duration="1674000" />
     </task>
+    <task id="LOCAL-00001" summary="Read me">
+      <created>1606565327936</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606565327936</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +113,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Read me" />
+    <option name="LAST_COMMIT_MESSAGE" value="Read me" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606312363724">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -119,5 +130,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1606312285912" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1606565332566">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1606565332566" />
   </component>
 </project>
