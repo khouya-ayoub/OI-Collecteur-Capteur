@@ -1,3 +1,6 @@
+/*
+ *              NODE ONE
+ */
 /* Cette constante permet d’utiliser les versions "thread safe" des */
 /* fonction de la lib C elle est OBLIGATOIRE */
 #define _REENTRANT
@@ -15,12 +18,16 @@
 #include <string>
 #include <vector>
 #include <unistd.h>
-
+// Custom libraries
 #include "net_aux.h"
 
-#define BUFFERMAX 100
-#define BIND_ADDR "127.0.0.1"
+// Server Configuration
+#define BIND_ADDR "127.0.0.1" // Ip address
+#define port 8000; // Default port
 #define CHECK_INTERVAL 5000000
+
+// Buffer config
+#define BUFFERMAX 100
 
 // Event names
 #define EVT_GET_NODES "getNodes"
@@ -28,13 +35,13 @@
 #define EVT_GET_JOKESTITLES "getJokesTitles"
 #define EVT_GET_JOKESTITLES_END "getJokesTitlesEnd"
 
-int srv_sock;
-int port = 8000; // Port par defaut
+// Utils
 std::vector<std::string> nodeList;
 std::vector<std::string> jokes;
-std::string jokeDirectory = "jokes/";
-
+std::string jokeDirectory = "jokes_one/";
 std::mutex nodeListMutex, jokeListMutex;
+
+int srv_sock;
 
 /* A server instance answering client commands */
 void* serverFunc(void *s) {
