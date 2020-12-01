@@ -20,8 +20,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Lancer les deux noeuds">
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/config/Eco_config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_16" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_17" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_18" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_19" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_20" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_21" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_22" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_23" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/config/Eco_config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_15" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_19" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_20" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/Full__config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_1127.0.1.1_data_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_1127.0.1.2_data_2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/config/full_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/config/seekEcoConfigAck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/eco_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/full_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/min_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/seekEcoConfigAck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,12 +94,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Collecteur-Capteur/Capteur" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Collecteur-Capteur/CaptorTwo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Collecteur-Capteur/CaptorTwo" />
       <recent name="$PROJECT_DIR$/Collecteur-Capteur/Capteur" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -71,6 +111,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" nameIsGenerated="true">
       <makefile filename="C:\Users\AYOUB\Desktop\Cloud\Git\OI-Collecteur-Capteur\Makefile" target="" workingDirectory="" arguments="">
         <envs />
@@ -95,7 +146,9 @@
       <workItem from="1606566534540" duration="8995000" />
       <workItem from="1606580154601" duration="1821000" />
       <workItem from="1606582229163" duration="436000" />
-      <workItem from="1606582749912" duration="3488000" />
+      <workItem from="1606582749912" duration="6415000" />
+      <workItem from="1606852230973" duration="8179000" />
+      <workItem from="1606861270680" duration="5090000" />
     </task>
     <task id="LOCAL-00001" summary="Read me">
       <created>1606565327936</created>

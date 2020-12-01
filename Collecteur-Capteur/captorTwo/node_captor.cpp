@@ -53,7 +53,7 @@ typedef struct{
 } server_params;
 
 int srv_sock;
-std::string ip_addr_df("127.0.1.1"); //adresse par defaut
+std::string ip_addr_df("127.0.1.2"); //adresse par defaut
 int port = 8002; // Port par defaut
 int sink_port = 8000;
 
@@ -77,7 +77,7 @@ int counter_sent_files = 0;
 double average_lost_files = 0;
 double average_lost_files_binding = 0;
 
-int battery_level = 1000;
+int battery_level = 700;
 
 bool test_battery_600 = false;
 bool test_battery_300 = false;

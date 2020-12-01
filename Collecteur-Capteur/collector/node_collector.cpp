@@ -42,9 +42,9 @@
 #define SEEK_ECO_CONFIG_ACK "seekEcoConfigAck"
 #define SEEK_MIN_CONFIG_ACK "seekMinConfigAck"
 #define SEEK_FULL_CONFIG_ACK "seekFullConfigAck"
-#define SEND_ECO_CONFIGIG "sendEcoConfig"
-#define SEND_MIN_CONFIGIG "sendMinConfig"
-#define SEND_FULL_CONFIGIG "sendFullConfig"
+#define SEND_ECO_CONFIG "sendEcoConfig"
+#define SEND_MIN_CONFIG "sendMinConfig"
+#define SEND_FULL_CONFIG "sendFullConfig"
 
 
 typedef struct {
@@ -64,6 +64,8 @@ std::vector<std::string> nodesWithData;
 std::vector<std::string> nodesSeekingEco;
 std::vector<std::string> nodesSeekingMin;
 std::vector<std::string> nodesSeekingFull;
+
+std::vector<int> nodeListReceived;
 
 std::string dataDirectory = "database";
 std::string configDirectory = "config";
@@ -104,6 +106,7 @@ void* serverFunc(void *s) {
 		if (std::find(nodeList.begin(), nodeList.end(), ip_sensor) == nodeList.end()) {
 			std::cout << "[COLLECTOR SERVER] New sensor node: " << ip_sensor.c_str() << std::endl;
 			nodeList.push_back(ip_sensor);
+			nodeListReceived.push_back(0); // ajouter le capteur et garder la même position
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
 			std::cout << "[COLLECTOR SERVER] Node already stored: " << ip_sensor.c_str() << std::endl;
 		}
@@ -223,16 +226,15 @@ void* Sent_Eco(void *i) {
 	/* demande d'une connexion au serveur */
 	open_connection(clt_sock, ip_serveur, sensor_port);
 	
-	sock_send(clt_sock, SEND_ECO_CONFIGIG);
+	sock_send(clt_sock, SEND_ECO_CONFIG);
 
 	/* envoi du message au serveur */
-	sock_send(clt_sock, dataConfig.at(1).c_str());
+	sock_send(clt_sock, dataConfig.at(2).c_str());
 	//supprimer de nodeseekinggeco
 	std::vector<std::string>::iterator it = std::find(nodesSeekingEco.begin(), nodesSeekingEco.end(), ip_serveur);
 	if (it != nodesSeekingEco.end()) {
 	    nodesSeekingEco.erase(it);
 	}
-
 	/* fermeture de la socket */
 	close_connection(clt_sock);
 }
@@ -247,14 +249,14 @@ void* Sent_Min(void *i) {
 	/* demande d'une connexion au serveur */
 	open_connection(clt_sock, ip_serveur, sensor_port);
 	
-	sock_send(clt_sock, SEND_MIN_CONFIGIG);
+	sock_send(clt_sock, SEND_MIN_CONFIG);
 
 	/* envoi du message au le serveur */
-    sock_send(clt_sock, dataConfig.at(0).c_str());
+    sock_send(clt_sock, dataConfig.at(1).c_str());
 	//supprimer de nodesSeekingMin
 	std::vector<std::string>::iterator it = std::find(nodesSeekingMin.begin(), nodesSeekingMin.end(), ip_serveur);
-    if (it != nodesSeekingEco.end()) {
-        nodesSeekingEco.erase(it);
+    if (it != nodesSeekingMin.end()) {
+        nodesSeekingMin.erase(it);
     }
 	/* fermeture de la socket */
 	close_connection(clt_sock);
@@ -315,7 +317,7 @@ void* updateDataList(void *i) {
 	while (true) {
 		sock_receive(clt_sock, buf, BUFFERMAX);
 
-		if (message_is(buf, EVT_GET_DATA_END)) { 
+		if (message_is(buf, EVT_GET_DATA_END)) {
 			std::vector<std::string>::iterator it = std::find(nodesWithData.begin(), nodesWithData.end(), ip_serveur_str);
 			if (it != nodesWithData.end())
 				nodesWithData.erase(it);
@@ -331,6 +333,13 @@ void* updateDataList(void *i) {
                 datafile = fopen(filename.c_str(), "w");
                 fclose(datafile);
                 dataList.push_back(newdataWithIP);
+                // incrementer dans le node des data received
+                std::vector<std::string>::iterator it = std::find(nodeList.begin(), nodeList.end(), ip_serveur_str);
+                if (it != nodeList.end()){
+                	int index =  it - nodeList.begin();
+                	nodeListReceived[index]++;
+                	std::cout << "[COLLECTOR INFO] Number of data recived from : " << ip_serveur_str << "is :" << nodeListReceived[index] << std::endl;
+                }
             } else {
                 std::cout << "[COLLECTOR] Data already stored: " << newdataWithIP << std::endl;
             }
@@ -382,8 +391,7 @@ void* clientFunc(void *n) {
 			}
 		}
 		nodesSeekingEcoMutex.unlock();
-		
-		
+
 		//Response MIN_CONFIGIG
 		nodesSeekingMinMutex.lock();
 		for (std::string ip : nodesSeekingMin) {
