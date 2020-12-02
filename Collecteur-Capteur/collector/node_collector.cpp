@@ -23,6 +23,9 @@
 // Custom libraries
 #include "../lib/net_aux.h"
 
+// Couleurs
+#include "../lib/colors.h"
+
 // Server Configuration
 #define CHECK_INTERVAL 3000000
 
@@ -80,22 +83,22 @@ void* serverFunc(void *s) {
 	int socket = params->sock;
 	std::string ip_client(params->ip_addr);
 	
-	std::cout << "[COLLECTOR SERVER] Receiving message from ip : " << ip_client.c_str() << std::endl;
-	std::cout << "[COLLECTOR SERVER] For transmission on socket : " << socket << std::endl;
+	std::cout << "[COLLECTOR SERVER] " << BLUE << " Receiving message from ip : " << ip_client.c_str() << REST << std::endl;
+	std::cout << "[COLLECTOR SERVER] " << GREEN << " For transmission on socket : " << socket << REST << std::endl;
 
 	char buf[BUFFERMAX];
 
 	// Reading command
 	sock_receive(socket, buf, BUFFERMAX);
 
-	std::cout << "[COLLECTOR SERVER] Receiving message: " << buf << std::endl;
+	std::cout << "[COLLECTOR SERVER] " << GREEN << " Receiving message: " << buf << REST << std::endl;
 	
 	std::string message(buf);
 	std::string command = message.substr(0, message.find("."));
 	std::string ip_sensor = message.substr(message.find(".")+1, message.size());
 	
-	std::cout << "[COLLECTOR SERVER] Receiving message: " << command << std::endl;
-	std::cout << "[COLLECTOR SERVER] Received sensor address : " << ip_sensor.c_str() << std::endl;
+	std::cout << "[COLLECTOR SERVER] " << GREEN << " Receiving message: " << command << REST << std::endl;
+	std::cout << "[COLLECTOR SERVER] " << BLUE << " Received sensor address : " << ip_sensor.c_str() << REST << std::endl;
 
 	// Answering command Notify Data Available
 	if (message_is(buf, DATA_AVAILABLE)) {
@@ -104,15 +107,15 @@ void* serverFunc(void *s) {
 		nodesWithDataMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodeList.begin(), nodeList.end(), ip_sensor) == nodeList.end()) {
-			std::cout << "[COLLECTOR SERVER] New sensor node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR SERVER] " << BLUE << " New sensor node: " << ip_sensor.c_str() << REST << std::endl;
 			nodeList.push_back(ip_sensor);
 			nodeListReceived.push_back(0); // ajouter le capteur et garder la même position
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR SERVER] Node already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR SERVER] " << RED <<  " Node already stored: " << ip_sensor.c_str() << REST << std::endl;
 		}
 		if (std::find(nodesWithData.begin(), nodesWithData.end(), ip_sensor) == nodesWithData.end()) {
 			//Affichage à enlever en fonctionnement normal
-			std::cout << "[COLLECTOR SERVER] Sensor node having data : " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR SERVER] " << MAGENTA << " Sensor node having data : " << ip_sensor.c_str() << REST << << std::endl;
 			nodesWithData.push_back(ip_sensor);
 		}
 
@@ -124,15 +127,15 @@ void* serverFunc(void *s) {
 	// Answering command Seek Eco_CONFIGig
 	if (message_is(buf, SEEK_ECO_CONFIG)) {
 
-		std::cout << "[COLLECTOR ECO_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_ECO_CONFIG << std::endl;
+		std::cout << "[COLLECTOR ECO_CONFIG] " << GREEN << " Receiving Event: " << buf << " - EVENT : " << SEEK_ECO_CONFIG << REST << std::endl;
 		nodesSeekingEcoMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodesSeekingEco.begin(), nodesSeekingEco.end(), ip_sensor) == nodesSeekingEco.end()) {
-			std::cout << "[COLLECTOR ECO_CONFIG] New sensor seeking ECO node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR ECO_CONFIG] " << YELLOW << " New sensor seeking ECO node: " << ip_sensor.c_str() << REST << std::endl;
 			nodesSeekingEco.push_back(ip_sensor);
 		} else {
 		    //En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR ECO_CONFIG] Node seeking ECO already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR ECO_CONFIG] " << RED << " Node seeking ECO already stored: " << ip_sensor.c_str() << REST << std::endl;
 		}
 
 		sock_send(socket, SEEK_ECO_CONFIG_ACK);
@@ -142,14 +145,14 @@ void* serverFunc(void *s) {
 	// Answering command Seek Min_CONFIGig
 	if (message_is(buf, SEEK_MIN_CONFIG)) {
 
-	    std::cout << "[COLLECTOR MIN_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_MIN_CONFIG << std::endl;
+	    std::cout << "[COLLECTOR MIN_CONFIG] " << GREEN << " Receiving Event: " << buf << " - EVENT : " << SEEK_MIN_CONFIG << REST << std::endl;
 		nodesSeekingMinMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est 
 		if (std::find(nodesSeekingMin.begin(), nodesSeekingMin.end(), ip_sensor) == nodesSeekingMin.end()) {
-			std::cout << "[COLLECTOR MIN_CONFIG] New sensor node seeking MIN: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR MIN_CONFIG] " << YELLOW << " New sensor node seeking MIN: " << ip_sensor.c_str() << REST << std::endl;
 			nodesSeekingMin.push_back(ip_sensor);
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR MIN_CONFIG] Node seeking MIN already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR MIN_CONFIG] " << RED << " Node seeking MIN already stored: " << ip_sensor.c_str() << REST << std::endl;
 		}
 
 		sock_send(socket, SEEK_MIN_CONFIG_ACK);
@@ -160,14 +163,14 @@ void* serverFunc(void *s) {
 	// Answering command Seek Full_CONFIG
 	if (message_is(buf, SEEK_FULL_CONFIG)) {
 
-	    std::cout << "[COLLECTOR FULL_CONFIG] Receiving Event: " << buf << " - evt : " << SEEK_FULL_CONFIG << std::endl;
+	    std::cout << "[COLLECTOR FULL_CONFIG] " << GREEN << " Receiving Event: " << buf << " - EVENT : " << SEEK_FULL_CONFIG <<  REST << std::endl;
 		nodesSeekingFullMutex.lock();
 		//Parcourir la liste des capteurs connus pour savoir si ip_client y est
 		if (std::find(nodesSeekingFull.begin(), nodesSeekingFull.end(), ip_sensor) == nodesSeekingFull.end()) {
-			std::cout << "[COLLECTOR FULL_CONFIG] New sensor node: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR FULL_CONFIG] " << YELLOW << " New sensor node: " << ip_sensor.c_str() << REST << std::endl;
 			nodesSeekingFull.push_back(ip_sensor);
 		} else {//En fonctionnement normal, enlever l'affichage ci-dessous
-			std::cout << "[COLLECTOR FULL_CONFIG] Node already stored: " << ip_sensor.c_str() << std::endl;
+			std::cout << "[COLLECTOR FULL_CONFIG] " << RED << " Node already stored: " << ip_sensor.c_str() << std::endl;
 		}
 
 		sock_send(socket, SEEK_FULL_CONFIG_ACK);
@@ -200,15 +203,15 @@ void* listenServer(void *n) {
 		//memset(params,0,sizeof(server_params));
 		params->sock = sock_effective;
 		
-		std::cout << "[COLLECTOR LISTENING] Connection accepted at socket : " << params->sock << std::endl;
+		std::cout << "[COLLECTOR LISTENING] " << GREEN << " Connection accepted at socket : " << params->sock << REST << std::endl;
 		
 		strncpy(params->ip_addr, buf, strlen(buf));
 		
-		std::cout << "[COLLECTOR LISTENING] Connection accepted from : " << params->ip_addr << std::endl;
+		std::cout << "[COLLECTOR LISTENING] " << BLUE << " Connection accepted from : " << params->ip_addr << std::endl;
 
 		pthread_t thrd;
 		if (pthread_create(&thrd, NULL, serverFunc, (void *) params) != 0) {
-			std::cerr << "[COLLECTOR LISTENING] Error while creating a new thread" << std::endl;
+			std::cerr << "[COLLECTOR LISTENING] " << RED << " Error while creating a new thread" << std::endl;
 			pthread_exit(NULL);
 		}
 		usleep(500000);
@@ -285,10 +288,10 @@ void* updateNodeList(void *i) {
 
 		std::string newNode(buf);
 		if (std::find(nodeList.begin(), nodeList.end(), newNode) == nodeList.end()) {
-			std::cout << "[COLLECTOR] New node: " << newNode << std::endl;
+			std::cout << "[COLLECTOR] " << GREEN << " New node: " << newNode << REST << std::endl;
 			nodeList.push_back(newNode);
 		} else {
-			std::cout << "[COLLECTOR] Node already stored: " << newNode << std::endl;
+			std::cout << "[COLLECTOR] " << RED << " Node already stored: " << newNode << REST << std::endl;
 		}
 	}
 
@@ -327,7 +330,7 @@ void* updateDataList(void *i) {
             //std::string newdataWithIP = ip_serveur_str + "_" + newdata;
             std::string newdataWithIP = newdata;
             if (std::find(dataList.begin(), dataList.end(), newdataWithIP) == dataList.end()) {
-                std::cout << "[COLLECTOR] New data: " << newdataWithIP << std::endl;
+                std::cout << "[COLLECTOR] " << GREEN << " New data: " << newdataWithIP << REST << std::endl;
                 FILE* datafile;
                 std::string filename(dataDirectory + "/" + newdataWithIP);
                 datafile = fopen(filename.c_str(), "w");
@@ -338,10 +341,10 @@ void* updateDataList(void *i) {
                 if (it != nodeList.end()){
                 	int index =  it - nodeList.begin();
                 	nodeListReceived[index]++;
-                	std::cout << "[COLLECTOR INFO] Number of data recived from : " << ip_serveur_str << "is :" << nodeListReceived[index] << std::endl;
+                	std::cout << "[COLLECTOR INFO] " << BLUE << " Number of data recived from : " << ip_serveur_str << "is :" << nodeListReceived[index] << REST << std::endl;
                 }
             } else {
-                std::cout << "[COLLECTOR] Data already stored: " << newdataWithIP << std::endl;
+                std::cout << "[COLLECTOR] " << RED << " Data already stored: " << newdataWithIP << REST << std::endl;
             }
 		}
 	}
@@ -349,9 +352,9 @@ void* updateDataList(void *i) {
 	dataListMutex.unlock();
 	nodesWithDataMutex.unlock();
 
-	std::cout << "[COLLECTOR] List of current data in database " << std::endl;	
+	std::cout << "[COLLECTOR] " << GREEN << " List of current data in database " << REST << std::endl;
 	for (std::string dataname : dataList) {
-		std::cout << "[COLLECTOR] " << dataname << std::endl;	
+		std::cout << "[COLLECTOR] " << BLUE << dataname << REST << std::endl;
 	}
 
 	/* fermeture de la socket */
@@ -362,17 +365,17 @@ void* updateDataList(void *i) {
 void* clientFunc(void *n) {
 	while(1) {
 		
-		std::cout << "[COLLECTOR CLIENT] Waiting data ..." << std::endl;
+		std::cout << "[COLLECTOR CLIENT] " << CYAN << " Waiting data ..." << REST << std::endl;
 
 		nodesWithDataMutex.lock();
 		dataListMutex.lock();
 
 		for (std::string ip : nodesWithData) {
-			std::cout << "[COLLECTOR CLIENT] Seeking data list from " << ip << std::endl;
+			std::cout << "[COLLECTOR CLIENT] " << BLUE << " Seeking data list from " << ip << REST << std::endl;
 
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, updateDataList, (void *)ip.c_str()) != 0) {
-				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+				std::cerr << "[COLLECTOR CLIENT] " << RED << " Error while creating a new thread: client sensor data update" << REST << std::endl;
 				pthread_exit(NULL);
 			}
 		}
@@ -383,10 +386,10 @@ void* clientFunc(void *n) {
 		//Response ECO_CONFIGIG
 		nodesSeekingEcoMutex.lock();
 		for (std::string ip : nodesSeekingEco) {
-			std::cout << "[COLLECTOR CLIENT] Seeking ECO_CONFIG file from " << ip << std::endl;
+			std::cout << "[COLLECTOR CLIENT] " << YELLOW << " Seeking ECO_CONFIG file from " << ip << REST << std::endl;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, Sent_Eco, (void *)ip.c_str()) != 0) {
-				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread, client sensor data update" << std::endl;
+				std::cerr << "[COLLECTOR CLIENT] " << RED << " Error while creating a new thread, client sensor data update" << REST << std::endl;
 				pthread_exit(NULL);
 			}
 		}
@@ -395,10 +398,10 @@ void* clientFunc(void *n) {
 		//Response MIN_CONFIGIG
 		nodesSeekingMinMutex.lock();
 		for (std::string ip : nodesSeekingMin) {
-			std::cout << "[COLLECTOR CLIENT] Seeking MIN_CONFIG file from " << ip << std::endl;
+			std::cout << "[COLLECTOR CLIENT] " << YELLOW << " Seeking MIN_CONFIG file from " << ip << REST << std::endl;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, Sent_Min, (void *)ip.c_str()) != 0) {
-				std::cerr << "[COLLECTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+				std::cerr << "[COLLECTOR CLIENT] " << RED << " Error while creating a new thread: client sensor data update" << REST << std::endl;
 				pthread_exit(NULL);
 			}
 		}
@@ -420,14 +423,14 @@ int main(int argc, char* argv[]) {
 			if (i < (argc - 1)) {
 				ip_addr_df = argv[++i];
 			} else {
-				std::cerr << "[MAIN] Error: no specified ip address" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Error: no specified ip address" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 		} else if(strarg == "-p") {
 			if (i < (argc - 1)) {
 				port = atoi(argv[++i]);
 			} else {
-				std::cerr << "[MAIN] Error: no specified port" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Error: no specified port" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 		} else if(strarg == "-d") {
@@ -435,7 +438,7 @@ int main(int argc, char* argv[]) {
 				std::string dir(argv[++i]);
 				dataDirectory = dir;
 			} else {
-				std::cerr << "[MAIN] Erreur: no specified data directory" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Erreur: no specified data directory" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 		} else if(strarg == "-l") {
@@ -449,14 +452,14 @@ int main(int argc, char* argv[]) {
 	}
 
 	// data
-	std::cout << "[MAIN] Adding data Config to list" << std::endl;
+	std::cout << "[MAIN] " << GREEN << " Adding data Config to list" << REST << std::endl;
 
 	DIR           *dir = opendir(configDirectory.c_str());
 	struct dirent *pdir;
 	while ((pdir = readdir(dir))) {
 		if(std::strlen(pdir->d_name) < 5) { continue; }
 		dataConfig.push_back(pdir->d_name);
-		std::cout << "[MAIN] Added " << pdir->d_name << " to data list." << std::endl;
+		std::cout << "[MAIN] " << GREEN << " Added " << pdir->d_name << " to data list." << REST << std::endl;
 	}
 	
 	// threads
@@ -464,12 +467,12 @@ int main(int argc, char* argv[]) {
 			  listen;
 
 	if (pthread_create(&client, NULL, clientFunc, NULL) != 0) {
-		std::cerr << "[MAIN] Error while creating a new thread: client" << std::endl;
+		std::cerr << "[MAIN] " << RED << " Error while creating a new thread: client" << REST << std::endl;
 		pthread_exit(NULL);
 	}
 
 	if (pthread_create(&listen, NULL, listenServer, NULL) != 0) {
-		std::cerr << "[MAIN] Error while creating a new thread: server" << std::endl;
+		std::cerr << "[MAIN] " << RED << " Error while creating a new thread: server" << REST << std::endl;
 		pthread_exit(NULL);
 	}
 

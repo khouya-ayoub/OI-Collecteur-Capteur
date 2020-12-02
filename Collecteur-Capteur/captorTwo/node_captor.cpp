@@ -23,6 +23,14 @@
 // Custom libraries
 #include "../lib/net_aux.h"
 
+// Couleurs
+#include "../lib/colors.h"
+// SUCCESS : GREEN
+// ERROR : RED
+// CONNECTION : BLUE
+// BATTERY : MAGENTA
+// DATA : CYAN
+
 // Server Configuration
 #define CHECK_INTERVAL 2000000
 
@@ -96,7 +104,7 @@ void* serverFunc(void *s) {
 	int socket = params->sock;
 	std::string ip_client(params->ip_addr);
 	
-	std::cout << "[CAPTOR SERVER] Recieving message from ip : " << ip_client.c_str() << std::endl;
+	std::cout << "[CAPTOR SERVER] " << BLUE << " Recieving message from ip : " << ip_client.c_str() << REST << std::endl;
 	
 	//int socket = *((int*)(&s));
 	char buf[BUFFERMAX];
@@ -104,7 +112,7 @@ void* serverFunc(void *s) {
 	// Reading command
 	sock_receive(socket, buf, BUFFERMAX);
 
-	std::cout << "[CAPTOR SERVER] Receiving message: " << buf << std::endl;
+	std::cout << "[CAPTOR SERVER] " << GREEN << " Receiving message: " << buf << REST << std::endl;
 
 	if (message_is(buf, EVT_GET_DATA)) {
 		dataListMutex.lock();
@@ -113,11 +121,11 @@ void* serverFunc(void *s) {
 		        battery_level -= 20;
                 counter_sent_files ++;
                 sock_send(socket, str.c_str());
-                std::cout << "[CAPTOR BATTERY] Transmission data -20  : " << battery_level << std::endl;
-                std::cout << "[CAPTOR INFORMATION] Number of files transmitted  : " << counter_sent_files << std::endl;
+                std::cout << "[CAPTOR BATTERY] " << MAGENTA << " Transmission data -20  : " << battery_level << REST << std::endl;
+                std::cout << "[CAPTOR INFORMATION] " << CYAN << " Number of files transmitted  : " << counter_sent_files << REST << std::endl;
 		    } else {
 		        battery_low = true;
-		        std::cout << "[CAPTOR BATTERY] BATTERY SO LOW" << std::endl;
+		        std::cout << "[CAPTOR BATTERY] " << RED << " BATTERY SO LOW" << REST << std::endl;
 		    }
 		}
 		// Delete existed data
@@ -151,7 +159,7 @@ void* serverFunc(void *s) {
             receivedConfigMutex.unlock();
 
             battery_level -= 30;
-            std::cout << "[CAPTOR MIN_CONFIG] File reception -30 : " << battery_level << std::endl;
+            std::cout << "[CAPTOR MIN_CONFIG] " << MAGENTA << " File reception -30 : " << battery_level << REST << std::endl;
 
 	    } else {
 	        battery_low = true;
@@ -174,7 +182,7 @@ void* serverFunc(void *s) {
             receivedConfigMutex.unlock();
 
             battery_level -= 30;
-            std::cout << "[CAPTOR MIN_CONFIG] File reception -30 : " << battery_level << std::endl;
+            std::cout << "[CAPTOR MIN_CONFIG] " << MAGENTA << " File reception -30 : " << battery_level << REST << std::endl;
 
     	} else {
     	    battery_low = true;
@@ -209,7 +217,7 @@ void* listenServer(void *n) {
 
 		pthread_t thrd;
 		if (pthread_create(&thrd, NULL, serverFunc, (void *) params) != 0) {
-			std::cerr << "[CAPTOR LISTENING] Error while creating a new thread" << std::endl;
+			std::cerr << "[CAPTOR LISTENING] Error while creating a new thread" << REST << std::endl;
 			pthread_exit(NULL);
 		}
 	}
@@ -231,7 +239,7 @@ void* notifyDataAvailable(void *i) {
 	/* envoi du message au le serveur */
 	sock_send(clt_sock, message.c_str());
 	battery_level -= 10;
-	std::cout << "[CAPTOR BATTERY] Notification Data Available -10 : " << battery_level << std::endl;
+	std::cout << "[CAPTOR BATTERY] " << MAGENTA << " Notification Data Available -10 : " << battery_level << REST << std::endl;
 
 	/* Lecture du message du client */
 	while(true) {
@@ -299,7 +307,7 @@ void* seek_min_config(void *i) {
 void* clientFunc(void *n) {
 		
 	while(1) {
-		//std::cout << "[CLIENT] Sensing data ..." << std::endl;
+		//std::cout << "[CLIENT] Sensing data ..." << REST << std::endl;
 		//créer la prochaine data
 		FILE* datafile;
 		std::string num = std::to_string(numeroData);
@@ -308,15 +316,15 @@ void* clientFunc(void *n) {
 		if(stop == false) {
 		    if (battery_level >= 50) {
 		        battery_level -= 50;
-                std::cout << "[CAPTOR CREAT] File creation -50 : " << battery_level << std::endl;
+                std::cout << "[CAPTOR CREAT] " << MAGENTA << " File creation -50 : " << battery_level << REST << std::endl;
                 filename = dataDirectory + "/" + ip_addr_df + "_data_" + num;
                 datafile = fopen(filename.c_str(), "w");
                 fclose(datafile);
                 dataListMutex.lock();
-                std::cout << "[CAPTOR ADD] Adding data to dataList" << filename.c_str() << std::endl;
+                std::cout << "[CAPTOR ADD] " << GREEN << " Adding data to dataList" << filename.c_str() << REST << std::endl;
                 dataList.push_back(ip_addr_df + "_data_" + num);
                 counter_generated_files ++;
-                std::cout << "[CAPTOR INFO] Generated files : " << counter_generated_files << std::endl;
+                std::cout << "[CAPTOR INFO] " << CYAN << " Generated files : " << counter_generated_files << REST << std::endl;
                 numeroData++;
                 dataListMutex.unlock();
 		    } else {
@@ -327,12 +335,12 @@ void* clientFunc(void *n) {
 
 		    filename = dataDirectory + "/" + ip_addr_df + "_data_" + num + "_lost";
 		    dataLostMutex.lock();
-		    std::cout << "[CAPTOR ADD] Adding data lost " << filename.c_str() << " to dataLost " << std::endl;
+		    std::cout << "[CAPTOR ADD] " << GREEN << " Adding data lost " << filename.c_str() << " to dataLost " << REST << std::endl;
 		    dataLost.push_back(ip_addr_df + "_data_" + num);
 
 
 		    counter_lost_files ++;
-		    std::cout << "[CAPTOR INFO] Number of lost files " << counter_lost_files << std::endl;
+		    std::cout << "[CAPTOR INFO] " << CYAN << " Number of lost files " << counter_lost_files << REST << std::endl;
 
             numeroData++;
             counter_generated_files++;
@@ -340,14 +348,14 @@ void* clientFunc(void *n) {
             dataLostMutex.unlock();
 		}
 
-		std::cout << "[CAPTOR LIST] List of current data in dataList " << std::endl;
+		std::cout << "[CAPTOR LIST] " << GREEN << " List of current data in dataList " << REST << std::endl;
 		for (std::string dataname : dataList) {
-		    std::cout << "[CAPTOR DATA] " << dataname << std::endl;
+		    std::cout << "[CAPTOR DATA] " << CYAN << dataname << REST << std::endl;
 		}
 
-		std::cout << "[CAPTOR LIST] List of current data in dataListPerdu " << std::endl;
+		std::cout << "[CAPTOR LIST] " << GREEN << " List of current data in dataListPerdu " << REST << std::endl;
 		for (std::string dataname : dataLost) {
-		    std::cout << "[CAPTOR DATA LOST] " << dataname << std::endl;
+		    std::cout << "[CAPTOR DATA LOST] " << CYAN << dataname << REST << std::endl;
 		}
 		
 		if(dataList.size() >= max_data_size && stop == false)
@@ -355,7 +363,7 @@ void* clientFunc(void *n) {
 		    stop = true;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, notifyDataAvailable, (void *) nodeList.at(0).c_str()) != 0) {
-			    std::cerr << "[CAPTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+			    std::cerr << "[CAPTOR CLIENT] " << RED << " Error while creating a new thread: client sensor data update" << REST << std::endl;
 			    pthread_exit(NULL);
 		    }
 		}
@@ -366,7 +374,7 @@ void* clientFunc(void *n) {
 		    test_battery_600 = true;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, seek_eco_config, (void *) nodeList.at(0).c_str()) != 0) {
-			    std::cerr << "[CAPTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+			    std::cerr << "[CAPTOR CLIENT] " << RED << " Error while creating a new thread: client sensor data update" << REST << std::endl;
 			    pthread_exit(NULL);
 		    }
 		}
@@ -377,7 +385,7 @@ void* clientFunc(void *n) {
 		    test_battery_300 = true;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, seek_min_config, (void *) nodeList.at(0).c_str()) != 0) {
-			    std::cerr << "[CAPTOR CLIENT] Error while creating a new thread: client sensor data update" << std::endl;
+			    std::cerr << "[CAPTOR CLIENT] " << RED << " Error while creating a new thread: client sensor data update" << REST << std::endl;
 			    pthread_exit(NULL);
 		    }
 		
@@ -399,14 +407,14 @@ int main(int argc, char* argv[]) {
 			if (i < (argc - 1)) {
 				ip_addr_df = argv[++i];
 			} else {
-				std::cerr << "[MAIN] Error: no specified ip address" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Error: no specified ip address" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 		} else if(strarg == "-p") {
 			if (i < (argc - 1)) {
 				port = atoi(argv[++i]);
 			} else {
-				std::cerr << "[MAIN] Error: no specified port" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Error: no specified port" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 
@@ -415,7 +423,7 @@ int main(int argc, char* argv[]) {
 				std::string dir(argv[++i]);
 				dataDirectory = dir;
 			} else {
-				std::cerr << "[MAIN] Erreur: no specified data directory" << std::endl;
+				std::cerr << "[MAIN] " << RED << " Erreur: no specified data directory" << REST << std::endl;
 				exit(EXIT_FAILURE);
 			}
 		} else if(strarg == "-l") {
@@ -433,12 +441,12 @@ int main(int argc, char* argv[]) {
 			  listen;
 
 	if (pthread_create(&client, NULL, clientFunc, NULL) != 0) {
-		std::cerr << "[MAIN] Error while creating a new thread: client" << std::endl;
+		std::cerr << "[MAIN] " << RED << " Error while creating a new thread: client" << REST << std::endl;
 		pthread_exit(NULL);
 	}
 
 	if (pthread_create(&listen, NULL, listenServer, NULL) != 0) {
-		std::cerr << "[MAIN] Error while creating a new thread: server" << std::endl;
+		std::cerr << "[MAIN] " << RED << " Error while creating a new thread: server" << REST << std::endl;
 		pthread_exit(NULL);
 	}
 
@@ -450,7 +458,7 @@ int main(int argc, char* argv[]) {
 	        for (std::string dataname : dataList) {
 	            std::string filename;
 	            filename = dataDirectory + dataname;
-	            std::cout << "[MAIN] Delete file " << filename << std::endl;
+	            std::cout << "[MAIN] " << CYAN << " Delete file " << filename << REST << std::endl;
 	            remove(filename.c_str());
 	            counter_lost_files ++;
 	        }
@@ -459,23 +467,23 @@ int main(int argc, char* argv[]) {
 	    }
 
 	    if(battery_low == true) {
-	        // la moyen de perte de liaison
-	        average_lost_files_binding = ((double)(counter_generated_files - counter_sent_files)/counter_generated_files) * 100;
-	        // moyen interne de collecteur
-	        average_lost_files = ((double) counter_lost_files/counter_generated_files) * 100;
-	        std::cout << "[CAPTOR INFO] ________________________________________________________________________"  << std::endl;
-	        std::cout << "[CAPTOR INFO] ||                      THE END OF THE PROCESSOR                      ||"  << std::endl;
-            std::cout << "[CAPTOR INFO] ||--------------------------------------------------------------------||"  << std::endl;
-            std::cout << "[CAPTOR INFO] || Generated files : " << counter_generated_files  << std::endl;
-            std::cout << "[CAPTOR INFO] || Sent files : " << counter_sent_files  << std::endl;
-            std::cout << "[CAPTOR INFO] || Lost files : " << counter_lost_files << std::endl;
-            std::cout << "[CAPTOR INFO] || Not sent files : " << dataList.size() << std::endl;
-            std::cout << "[CAPTOR INFO] || Average of lost files -Captor- : " <<  average_lost_files << " % " << std::endl;
-            std::cout << "[CAPTOR INFO] || Average of lost files between Captor and Collector : "<< average_lost_files_binding << " % " << std::endl;
-            std::cout << "[CAPTOR INFO] ||____________________________________________________________________||"  << std::endl;
-            std::cout << "[CAPTOR INFO] \\---------------------------------------------------------------------/"  << std::endl;
+        	// la moyen de perte de liaison
+        	average_lost_files_binding = ((double)(counter_generated_files - counter_sent_files)/counter_generated_files) * 100;
+        	// moyen interne de collecteur
+        	average_lost_files = ((double) counter_lost_files/counter_generated_files) * 100;
+        	std::cout << CYAN << "[CAPTOR INFO] ________________________________________________________________________"  << REST << std::endl;
+        	std::cout << CYAN << "[CAPTOR INFO] ||                      THE END OF THE PROCESSOR                      ||"  << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] ||--------------------------------------------------------------------||"  << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Generated files : " << MAGENTA << counter_generated_files  << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Sent files : " << GREEN << counter_sent_files  << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Lost files : " << RED << counter_lost_files << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Not sent files : " << BLUE << dataList.size() << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Average of lost files -Captor- : " << YELLOW <<  average_lost_files << " % " << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] || Average of lost files between Captor and Collector : " << YELLOW << average_lost_files_binding << " % " << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] ||____________________________________________________________________||"  << REST << std::endl;
+            std::cout << CYAN << "[CAPTOR INFO] \\---------------------------------------------------------------------/"  << REST << std::endl;
             break;
-	    }
+        }
 	}
 
 	return EXIT_SUCCESS;
