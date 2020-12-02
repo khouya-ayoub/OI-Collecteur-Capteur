@@ -55,13 +55,17 @@
 #define SEND_FULL_CONFIG "sendFullConfig"
 
 
+////////////////////////////////////////////////////////////////
+std::string ip_addr_df("127.1.1.1"); // address capteur 1
+int battery_level = 700;
+///////////////////////////////////////////////////////////////
+
 typedef struct{
 	int sock;
 	char ip_addr[15];
 } server_params;
 
 int srv_sock;
-std::string ip_addr_df("127.0.1.2"); //adresse par defaut
 int port = 8002; // Port par defaut
 int sink_port = 8000;
 
@@ -84,8 +88,6 @@ int counter_sent_files = 0;
 
 double average_lost_files = 0;
 double average_lost_files_binding = 0;
-
-int battery_level = 700;
 
 bool test_battery_600 = false;
 bool test_battery_300 = false;
@@ -125,7 +127,7 @@ void* serverFunc(void *s) {
                 std::cout << "[CAPTOR INFORMATION] " << CYAN << " Number of files transmitted  : " << counter_sent_files << REST << std::endl;
 		    } else {
 		        battery_low = true;
-		        std::cout << "[CAPTOR BATTERY] " << RED << " BATTERY SO LOW" << REST << std::endl;
+		        std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY LOW " << battery_level << REST << std::endl;
 		    }
 		}
 		// Delete existed data
@@ -163,6 +165,7 @@ void* serverFunc(void *s) {
 
 	    } else {
 	        battery_low = true;
+	        std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY LOW " << battery_level << REST << std::endl;
 	    }
 	}
 
@@ -186,6 +189,7 @@ void* serverFunc(void *s) {
 
     	} else {
     	    battery_low = true;
+    	    std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY LOW " << battery_level << REST << std::endl;
     	}
     }
 
@@ -329,6 +333,7 @@ void* clientFunc(void *n) {
                 dataListMutex.unlock();
 		    } else {
 		        battery_low = true;
+		        std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY LOW " << battery_level << REST << std::endl;
 		    }
 		}
 		else if(stop == true && battery_low == false) {
@@ -371,6 +376,7 @@ void* clientFunc(void *n) {
 		//Check battery 600 and seeking eco_config
 		if(battery_level <= 600 && test_battery_600 == false)
 		{
+		    std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY-600 : " << battery_level << REST << std::endl;
 		    test_battery_600 = true;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, seek_eco_config, (void *) nodeList.at(0).c_str()) != 0) {
@@ -382,6 +388,7 @@ void* clientFunc(void *n) {
 		//Check battery 300 and seeking min_config
 		if(battery_level <= 300 && test_battery_300 == false)
 		{
+		    std::cout << "[CAPTOR BATTERY] " << RED << " ALERT ! BATTERY-300 : " << battery_level << REST << std::endl;
 		    test_battery_300 = true;
 			pthread_t traitement;
 			if(pthread_create(&traitement, NULL, seek_min_config, (void *) nodeList.at(0).c_str()) != 0) {
@@ -467,12 +474,12 @@ int main(int argc, char* argv[]) {
 	    }
 
 	    if(battery_low == true) {
-	        // la moyen de perte de liaison
-	        average_lost_files_binding = ((double)(counter_generated_files - counter_sent_files)/counter_generated_files) * 100;
-	        // moyen interne de collecteur
-	        average_lost_files = ((double) counter_lost_files/counter_generated_files) * 100;
-	        std::cout << CYAN << "[CAPTOR INFO] ________________________________________________________________________"  << REST << std::endl;
-	        std::cout << CYAN << "[CAPTOR INFO] ||                      THE END OF THE PROCESSOR                      ||"  << REST << std::endl;
+        	// la moyen de perte de liaison
+        	average_lost_files_binding = 0*((double)(counter_generated_files - counter_sent_files)/counter_generated_files) * 100;
+        	// moyen interne de collecteur
+        	average_lost_files = ((double) counter_lost_files/counter_generated_files) * 100;
+        	std::cout << CYAN << "[CAPTOR INFO] ________________________________________________________________________"  << REST << std::endl;
+        	std::cout << CYAN << "[CAPTOR INFO] ||                      THE END OF THE PROCESSOR                      ||"  << REST << std::endl;
             std::cout << CYAN << "[CAPTOR INFO] ||--------------------------------------------------------------------||"  << REST << std::endl;
             std::cout << CYAN << "[CAPTOR INFO] || Generated files : " << MAGENTA << counter_generated_files  << REST << std::endl;
             std::cout << CYAN << "[CAPTOR INFO] || Sent files : " << GREEN << counter_sent_files  << REST << std::endl;
@@ -483,7 +490,7 @@ int main(int argc, char* argv[]) {
             std::cout << CYAN << "[CAPTOR INFO] ||____________________________________________________________________||"  << REST << std::endl;
             std::cout << CYAN << "[CAPTOR INFO] \\---------------------------------------------------------------------/"  << REST << std::endl;
             break;
-	    }
+        }
 	}
 
 	return EXIT_SUCCESS;

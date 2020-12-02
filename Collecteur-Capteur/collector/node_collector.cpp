@@ -49,6 +49,11 @@
 #define SEND_MIN_CONFIG "sendMinConfig"
 #define SEND_FULL_CONFIG "sendFullConfig"
 
+///////////////////////////////////////
+std::string ip_addr_df("127.0.0.1"); // address serveur
+//////////////////////////////////////
+
+
 
 typedef struct {
 	int sock;
@@ -56,7 +61,6 @@ typedef struct {
 } server_params;
 
 int srv_sock;
-std::string ip_addr_df("127.0.0.1"); //adresse par defaut
 int port = 8000; // Port par defaut
 int sensor_port = 8002;
 
@@ -115,7 +119,7 @@ void* serverFunc(void *s) {
 		}
 		if (std::find(nodesWithData.begin(), nodesWithData.end(), ip_sensor) == nodesWithData.end()) {
 			//Affichage à enlever en fonctionnement normal
-			std::cout << "[COLLECTOR SERVER] " << MAGENTA << " Sensor node having data : " << ip_sensor.c_str() << REST << << std::endl;
+			std::cout << "[COLLECTOR SERVER] " << MAGENTA << " Sensor node having data : " << ip_sensor.c_str() << REST << std::endl;
 			nodesWithData.push_back(ip_sensor);
 		}
 
