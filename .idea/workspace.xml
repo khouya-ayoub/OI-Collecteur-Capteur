@@ -20,82 +20,140 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="92ef257a-e535-42e7-970b-18eebd2b28ce" name="Default Changelist" comment="Lancer les deux noeuds">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_16" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.1.1.1_data_21" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_17" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_18" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_15" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_19" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_16" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_20" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_17" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_21" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_18" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_22" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_19" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.0.1.1_data_23" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_20" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_14" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_21" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_15" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_1127.1.1.1_data_2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_19" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.0.1.2_data_20" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_1127.0.1.1_data_2" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_3" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_4" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_5" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_6" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_7" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_1127.2.2.2_data_2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.1_data_8" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_1127.0.1.2_data_2" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_3" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_4" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_5" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_6" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_7" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_7" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_8" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.0.1.2_data_8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/TP1_Objets_Intelligents.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/noeud_collecteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/.idea/sources_tp1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_10" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_12" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_13" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_14" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_15" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_16" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/capteur1/127.0.1.1_data_9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/collecteur" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/mes Capteur collecteur/noeud_capteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/mes Capteur collecteur/noeud_collecteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/noeud1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/TP1/sources_tp1/noeud2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/noeud_capteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/noeud_collecteur.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/jokes/date.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/jokes/ipv4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/jokes/ipv6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/jokes/tcp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/jokes/udp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/net_aux.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/net_aux.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/noeud" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src-Not-Used/sources/noeud.cpp" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/battery_300.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/battery_600.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/bbb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/capture_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/collecteur.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/datad_collector.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/fin_deux.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/node_lance.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/notifier.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/server wait.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/serveur lancé.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/st.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/statistic.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/two_nodes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/twoo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Captures/twoooo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/captor/node_captor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/captorTwo/node_captor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/collector/config/Eco_config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/collector/config/Full__config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/collector/config/Min_config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/collector/node_collector.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/lib/colors.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/lib/net_aux.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/lib/net_aux.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Collecteur-Capteur/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/captures/capture_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/captures/capture_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/captures/capture_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/captures/capture_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/balgue14.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague12.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague13.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague15.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague16.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_one/blague17.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague21.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague22.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague23.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague24.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague25.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague26.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/jokes_two/blague27.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/lib/net_aux.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/lib/net_aux.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/node_one.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Codes/Two-Nodes/node_two.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/battery_300.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/battery_600.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/bbb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/capture_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/collecteur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/datad_collector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/fin_deux.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/node_lance.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/notifier.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/server wait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/serveur lancé.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/st.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/statistic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/two_nodes.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/twoo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Captures/twoooo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/config/Eco_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/data/127.1.1.1_data_21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captor/node_captor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/config/Eco_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_15" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_16" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_18" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/data/127.2.2.2_data_21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/captorTwo/node_captor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/Eco_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/Full__config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/config/Min_config" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_1127.1.1.1_data_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.1.1.1_data_8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_1127.2.2.2_data_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/database/127.2.2.2_data_8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/collector/node_collector.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/lib/colors.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/lib/net_aux.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/lib/net_aux.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Collecteur-Capteur/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/captures/capture_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/captures/capture_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/captures/capture_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/captures/capture_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/balgue14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague16.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_one/blague17.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague21.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague22.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague23.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague24.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague25.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague26.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/jokes_two/blague27.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/lib/net_aux.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/lib/net_aux.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_one" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_one.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_two" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Two-Nodes/node_two.cpp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +234,7 @@
       <workItem from="1606912359334" duration="943000" />
       <workItem from="1606913375620" duration="3653000" />
       <workItem from="1606917162286" duration="1888000" />
+      <workItem from="1607030550417" duration="606000" />
     </task>
     <task id="LOCAL-00001" summary="Read me">
       <created>1606565327936</created>
